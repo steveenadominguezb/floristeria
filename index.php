@@ -44,31 +44,35 @@
             }
         </style>
         <?php
-            function darBienvenida($nombre){
+            function darBienvenida($nombre,$contra){
+
+                require("conexionDB.php");
+
+                $consulta = "SELECT * FROM `USUARIOS` WHERE `USUARIO` LIKE '$nombre' AND `CONTRASEÑA` LIKE '$contra';";
                 
+                $query = mysqli_query($conexion,$consulta);
+
+                while($fila = mysqli_fetch_assoc($query)){
+                    foreach($fila as $key=>$valor){
+                        if($key == "NOMBRE"){
+                            echo "<h1>Bienvenid@ $valor</h1>";
+                        }
+                    }
+                }
+                mysqli_close($conexion);
             }
         ?>
     </head>
     <body class="pagina_inicio">
         <div class="div_usuario">
-            <button class="boton_usuario"><a href="/floristeria/login.php">Login</a></button>
+            <button type="button" class="boton_usuario"><a href="/floristeria/login.php">Login</a></button>
         </div>
         <div class="div_titulo">
             <p>OlmaFlowers</p>
         </div>
         <?php
-            $username = $_GET["nombre_user"];
-            require("conexionDB.php");
-            $consulta = "SELECT * FROM `USUARIOS` WHERE `USUARIO` LIKE '$username';";
-            
-            $query = mysqli_query($conexion,$consulta);
-
-            while($fila = mysqli_fetch_assoc($query)){
-                foreach($fila as $key=>$valor){
-                    if($key == "NOMBRE"){
-                        echo "<h1>Bienvenido $valor</h1>";
-                    }
-                }
+            if($_GET["nombre_user"] != null){
+                darBienvenida($_GET["nombre_user"],$_GET["contra_user"]);
             }
 
         ?>
