@@ -38,7 +38,7 @@
             <h1>Inicio de sesión</h1>
         </div>
         <div class="divform">
-            <form action="/floristeria/index.php" method="get">
+            <form action="/floristeria/index.php" method="post">
                 <div class="divart">
                         <label class="label">Nombre Usuario: </label>
                         <input type="text" name="nombre_user" id="nombre_user" placeholder="nombre de usuario" >

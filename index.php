@@ -65,14 +65,15 @@
     </head>
     <body class="pagina_inicio">
         <div class="div_usuario">
+            <button type="button" class="boton_usuario"><a href="/floristeria/registrar.php">Registrar</a></button>
             <button type="button" class="boton_usuario"><a href="/floristeria/login.php">Login</a></button>
         </div>
         <div class="div_titulo">
             <p>OlmaFlowers</p>
         </div>
         <?php
-            if($_GET["nombre_user"] != null){
-                darBienvenida($_GET["nombre_user"],$_GET["contra_user"]);
+            if($_POST["nombre_user"] != null){
+                darBienvenida($_POST["nombre_user"],$_POST["contra_user"]);
             }
 
         ?>
