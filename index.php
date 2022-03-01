@@ -43,6 +43,11 @@
                 border: solid;
             }
         </style>
+        <?php
+            function darBienvenida($nombre){
+                
+            }
+        ?>
     </head>
     <body class="pagina_inicio">
         <div class="div_usuario">
@@ -52,40 +57,20 @@
             <p>OlmaFlowers</p>
         </div>
         <?php
-         include("conexionDB.php");
-         $consulta = "SELECT * FROM USUARIOS;";
-        
-         $algo = mysqli_query($conexion,$consulta);
-        ?>
-        <div class ="divtable">
-            <table style="border: solid; margin :auto">
-                <?php
-                $cont= 0;
-                    while($respuesta = mysqli_fetch_assoc($algo)){
-                        echo "<tr>";
-                        $cont++;
-                        $td ="";
-                        foreach($respuesta as $key => $valor){
-                            $th = "";
-                            
-                            if($cont == 1){
-                                $th = $th . "<th>$key</th>";
-                                echo $th;
-                                $td .="<td>$valor</td>";
-                                
-                            }else{
-                                echo "<td class='centrado'>$valor</td>";
-                            }
-                            
-                        }
-                        if($cont==1){
-                            echo "<tr>$td</tr>";
-                        }
-                        echo "</tr>";
+            $username = $_GET["nombre_user"];
+            require("conexionDB.php");
+            $consulta = "SELECT * FROM `USUARIOS` WHERE `USUARIO` LIKE '$username';";
+            
+            $query = mysqli_query($conexion,$consulta);
+
+            while($fila = mysqli_fetch_assoc($query)){
+                foreach($fila as $key=>$valor){
+                    if($key == "NOMBRE"){
+                        echo "<h1>Bienvenido $valor</h1>";
                     }
-                ?>
-            </table>
-        </div>
-        
+                }
+            }
+
+        ?>
     </body>
 </html>
