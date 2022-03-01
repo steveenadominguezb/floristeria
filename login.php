@@ -6,6 +6,7 @@
         <style>
             A{
                 text-decoration: none;
+                color: black;
             }
             .login{
                 background-color:aquamarine;
@@ -62,8 +63,8 @@
                         <input type="password" name="contra_user" id="contra_user" placeholder="**************">
                     </div>
                     <div class="divart">
-                        <button class="boton" type="submit">Entrar<a href="/floristeria/postlogin.php"></a></button>
-                        <button class="boton" type="button">Volver<a href="/floristeria/index.php"></a></button>
+                        <button class="boton" type="submit">Entrar</button>
+                        <button class="boton" type="button"><a href="/floristeria/">Volver</a></button>
                     </div>
                 </form>
             </div>
