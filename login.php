@@ -17,6 +17,7 @@
                 text-align: center;
                 font-family: cursive;
                 font-size: x-large;
+                text-shadow: 5px 5px 5px white;
                 margin-top: 100px;
                 margin-bottom: 100px;
             }
