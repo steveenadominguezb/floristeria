@@ -2,14 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>OlmaFlowers</title>
+        <title>Registro</title>
         <style>
-            A{
-                text-decoration: none;
-                color: white;
-                text-shadow: 1px 1px 20px black;
-                font-size: larger;
-            }
             .pagina_inicio{
             background-color:aquamarine;
             }
@@ -23,7 +17,6 @@
             }
             .div_usuario{
                 text-align: right;
-                
             }
             .boton_usuario{
                 width: 100px;
@@ -50,41 +43,17 @@
                 border: solid;
             }
         </style>
-        <?php
-            function darBienvenida($nombre,$contra){
-
-                require("conexionDB.php");
-
-                $consulta = "SELECT * FROM `USUARIOS` WHERE `USUARIO` LIKE '$nombre' AND `CONTRASEÑA` LIKE '$contra';";
-                
-                $query = mysqli_query($conexion,$consulta);
-
-                while($fila = mysqli_fetch_assoc($query)){
-                    foreach($fila as $key=>$valor){
-                        if($key == "NOMBRE"){
-                            echo "<h1>Bienvenid@ $valor</h1>";
-                        }
-                    }
-                }
-                mysqli_close($conexion);
-            }
-        ?>
     </head>
     <body class="pagina_inicio">
-        <div class="div_usuario">
-            <button type="button" class="boton_usuario"><a href="/floristeria/register.php">Registrar</a></button>
-            <button type="button" class="boton_usuario"><a href="/floristeria/login.php">Login</a></button>
-        </div>
         <div class="div_titulo">
             <p>OlmaFlowers</p>
         </div>
         <?php
-           /**
-            * if($_POST["nombre_user"] != null){
-               * darBienvenida($_POST["nombre_user"],$_POST["contra_user"]);
-            *}
-            *  */ 
-
+            require("usuario.php");
+            $usuario = new Usuario();
+            $usuario->Usuario($_GET["cedula"],$_GET["nombre"],$_GET["apellido"],$_GET["usuario"],$_GET["contraseña"],$_GET["edad"]);
+            $usuario->insertarUsuario();
         ?>
+        <button type="button"><a href="/floristeria/">volver</a></button>
     </body>
 </html>

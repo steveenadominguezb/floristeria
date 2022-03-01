@@ -4,12 +4,6 @@
         <meta charset="utf-8">
         <title>OlmaFlowers</title>
         <style>
-            A{
-                text-decoration: none;
-                color: white;
-                text-shadow: 1px 1px 20px black;
-                font-size: larger;
-            }
             .pagina_inicio{
             background-color:aquamarine;
             }
@@ -23,7 +17,6 @@
             }
             .div_usuario{
                 text-align: right;
-                
             }
             .boton_usuario{
                 width: 100px;
@@ -71,19 +64,13 @@
         ?>
     </head>
     <body class="pagina_inicio">
-        <div class="div_usuario">
-            <button type="button" class="boton_usuario"><a href="/floristeria/register.php">Registrar</a></button>
-            <button type="button" class="boton_usuario"><a href="/floristeria/login.php">Login</a></button>
-        </div>
         <div class="div_titulo">
             <p>OlmaFlowers</p>
         </div>
         <?php
-           /**
-            * if($_POST["nombre_user"] != null){
-               * darBienvenida($_POST["nombre_user"],$_POST["contra_user"]);
-            *}
-            *  */ 
+            if($_POST["nombre_user"] != null){
+                darBienvenida($_POST["nombre_user"],$_POST["contra_user"]);
+            }
 
         ?>
     </body>
