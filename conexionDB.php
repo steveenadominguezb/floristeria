@@ -8,7 +8,7 @@
     $db_contra = "";
 
     //establecer conexion con la db
-    $conexion = mysqli_connect($db_dir,$db_usuario,$db_contra,$db_nombre);
+    $conexion = mysqli_connect($db_dir,$db_usuario,$db_contra,$db_nombre) or die ("No se pudo establecer conexión con $db_nombre");
 
     //Comprueba que se haya establecido conexión, sino, termina la petición.
     if(mysqli_errno($conexion)){

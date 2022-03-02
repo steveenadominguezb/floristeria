@@ -27,8 +27,12 @@
 
            $consulta = "INSERT INTO usuarios (CEDULA,NOMBRE,APELLIDO,USUARIO,CONTRASEÑA,EDAD) VALUES
             ('$this->cedula','$this->nombre','$this->apellido','$this->usuario','$this->contraseña',$this->edad);";
-            mysqli_query($conexion,$consulta);
-            echo "<h1 style='text-align:center;'>Usuario registrado</h1>";
+            $query= mysqli_query($conexion,$consulta);
+            if($query){
+                echo "<h1 style='text-align:center;'>Usuario registrado</h1>";
+            }else{
+                echo "<h1 style='text-align:center;'>Eror al agregar usuario nuevo</h1>";
+            }
         }
     }
 ?>

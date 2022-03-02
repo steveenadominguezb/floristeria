@@ -49,6 +49,9 @@
         </style>
     </head>
     <body class="login">
+        <?php
+            $placehol='nombre.deusuario';
+        ?>
         <div class="divh1">
             <h1>Inicio de sesión</h1>
         </div>
@@ -57,11 +60,14 @@
                 <form action="/floristeria/postlogin.php" method="post">
                     <div class="divart">
                             <label class="label">Nombre Usuario: </label>
-                            <input type="text" name="nombre_user" id="nombre_user" placeholder="nombre de usuario" >
+                            <?php
+                            echo '<input type="text" name="nombre_user" id="nombre_user" required placeholder= ' . $placehol . '>';
+                            ?>
+                            
                     </div>
                     <div class="divart">
                         <label class="label">Contraseña: </label>
-                        <input type="password" name="contra_user" id="contra_user" placeholder="**************">
+                        <input type="password" name="contra_user" id="contra_user"  required placeholder="**************">
                     </div>
                     <div class="divart">
                         <button class="boton" type="submit">Entrar</button>

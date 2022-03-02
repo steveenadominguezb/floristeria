@@ -69,24 +69,24 @@
         <form class="formulario" method="get" action="insertar_usuario.php">
             <div class="divdatos">
                 <div class="divlabel">
-                <label class="labels">Cedula: </label><input type="text" name="cedula" placeholder="1234567890">
+                <label class="labels">Cedula: </label><input type="text" name="cedula" required placeholder="1234567890">
                 </div>
                 <div class="divlabel">
-                <label class="labels">Nombre: </label><input type="text" name="nombre" placeholder="Nombre">
+                <label class="labels">Nombre: </label><input type="text" name="nombre" required placeholder="Nombre">
                 </div>
                 <div class="divlabel">
-                <label class="labels">Apellido: </label><input type="text" name="apellido" placeholder="Apellido">
+                <label class="labels">Apellido: </label><input type="text" name="apellido" required placeholder="Apellido">
                 </div>            
             </div>
             <div class="divdatos">
                 <div class="divlabel">
-                <label class="labels">Usuario: </label><input type="text" name="usuario" placeholder="Usuario">
+                <label class="labels">Usuario: </label><input type="text" name="usuario" required placeholder="Usuario">
                 </div>
                 <div class="divlabel">
-                <label class="labels">Contraseña: </label><input type="password" name="contraseña" placeholder="*******">
+                <label class="labels">Contraseña: </label><input type="password" name="contraseña" required placeholder="*******">
                 </div>
                 <div class="divlabel">
-                <label class="labels">Edad: </label><input type="number" name="edad" placeholder="xx">
+                <label class="labels">Edad: </label><input type="text" name="edad" maxlength="2" required placeholder="xx">
                 </div>
             </div>
             <div class="divBoton">

@@ -47,18 +47,25 @@
             function darBienvenida($nombre,$contra){
 
                 require("conexionDB.php");
+                $nombre = $_POST["nombre_user"];
+                $contra = $_POST["contra_user"];
+                $sql = "SELECT CEDULA,NOMBRE FROM `USUARIOS` WHERE `USUARIO` LIKE ? AND `CONTRASEÑA` LIKE ?;";
+               
 
-                $consulta = "SELECT * FROM `USUARIOS` WHERE `USUARIO` LIKE '$nombre' AND `CONTRASEÑA` LIKE '$contra';";
-                
-                $query = mysqli_query($conexion,$consulta);
+                $stmt = mysqli_prepare($conexion,$sql);
 
-                while($fila = mysqli_fetch_assoc($query)){
-                    foreach($fila as $key=>$valor){
-                        if($key == "NOMBRE"){
-                            echo "<h1>Bienvenid@ $valor</h1>";
+                $bind = mysqli_stmt_bind_param($stmt,"ss",$nombre,$contra);
+
+                if(mysqli_stmt_execute($stmt)){
+                    if(mysqli_stmt_bind_result($stmt,$cedula,$nombre)){
+                        while($result=mysqli_stmt_fetch($stmt)){
+                            echo "<h1>Bienvenid@ $nombre</h1>";
                         }
                     }
+                }else{
+                    echo "Erro al ejecutar la consulta";
                 }
+
                 mysqli_close($conexion);
             }
         ?>
@@ -69,6 +76,7 @@
         </div>
         <?php
             if($_POST["nombre_user"] != null){
+                
                 darBienvenida($_POST["nombre_user"],$_POST["contra_user"]);
             }
 
