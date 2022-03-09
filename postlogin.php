@@ -49,18 +49,25 @@
                 require("conexionDB.php");
                 $nombre = $_POST["nombre_user"];
                 $contra = $_POST["contra_user"];
-                $sql = "SELECT CEDULA,NOMBRE FROM `USUARIOS` WHERE `USUARIO` LIKE ? AND `CONTRASEÑA` LIKE ?;";
-               
+                $sql = "SELECT CODE,NOMBRE FROM `USUARIOS` WHERE `USUARIO` LIKE ? AND `CONTRASEÑA` LIKE ?;";
+
 
                 $stmt = mysqli_prepare($conexion,$sql);
 
                 $bind = mysqli_stmt_bind_param($stmt,"ss",$nombre,$contra);
 
                 if(mysqli_stmt_execute($stmt)){
-                    if(mysqli_stmt_bind_result($stmt,$cedula,$nombre)){
-                        while($result=mysqli_stmt_fetch($stmt)){
-                            echo "<h1>Bienvenid@ $nombre</h1>";
+                    if($algo=mysqli_stmt_bind_result($stmt,$cedula,$nombre)){
+                        $result=mysqli_stmt_fetch($stmt);
+                        if($result!=null){
+                            while($result){
+                                echo "<h1>Bienvenid@ $nombre</h1>";
+                                $result=mysqli_stmt_fetch($stmt);
+                            }
+                        }else{
+                            echo "No existe usuario con esas credenciales";
                         }
+
                     }
                 }else{
                     echo "Erro al ejecutar la consulta";
@@ -76,7 +83,7 @@
         </div>
         <?php
             if($_POST["nombre_user"] != null){
-                
+
                 darBienvenida($_POST["nombre_user"],$_POST["contra_user"]);
             }
 

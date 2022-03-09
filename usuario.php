@@ -1,19 +1,21 @@
 <?php
     class Usuario{
-        private $cedula;
+        private $code;
         private $nombre="";
         private $apellido;
         private $usuario;
         private $contraseña;
-        private $edad;
+        private $fechanacim;
+        private $celular;
 
-        function Usuario($cedula,$nombre,$apellido,$usuario,$contraseña,$edad){
-            $this->cedula = $cedula;
+        function Usuario($code,$nombre,$apellido,$usuario,$contraseña,$fechanacim,$celular){
+            $this->code = $code;
             $this->nombre = $nombre;
             $this->apellido = $apellido;
             $this->usuario = $usuario;
             $this->contraseña = $contraseña;
-            $this->edad = $edad;
+            $this->fechanacim = $fechanacim;
+            $this->celular = $celular;
         }
         function set_nombre($nombre){
             $this->nombre = $nombre;
@@ -25,8 +27,8 @@
         function insertarUsuario(){
             require("conexionDB.php");
 
-           $consulta = "INSERT INTO usuarios (CEDULA,NOMBRE,APELLIDO,USUARIO,CONTRASEÑA,EDAD) VALUES
-            ('$this->cedula','$this->nombre','$this->apellido','$this->usuario','$this->contraseña',$this->edad);";
+           $consulta = "INSERT INTO usuarios (CODE,NOMBRE,APELLIDO,USUARIO,CONTRASEÑA,FECHANACIM,CELULAR) VALUES
+            ('$this->code','$this->nombre','$this->apellido','$this->usuario','$this->contraseña','$this->fechanacim','$this->celular');";
             $query= mysqli_query($conexion,$consulta);
             if($query){
                 echo "<h1 style='text-align:center;'>Usuario registrado</h1>";

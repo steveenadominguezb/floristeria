@@ -23,9 +23,9 @@
                 margin-top: 100px;
             }
             .divdatos{
+                margin: auto;
                 margin-top: 30px;
                 margin-bottom: 10px;
-                display: inline-block;
                 width: 49%;
             }
             .divBoton{
@@ -36,8 +36,8 @@
             .divlabel{
                 margin: auto;
                 margin-top: 30px;
-                background-color: #D5D5D5;
-                width: fit-content;
+                background-color: #D5D5;
+                width: 350px;;
                 border-color: black;
                 border-radius: 20px;
                 border-width: 1px;
@@ -59,7 +59,7 @@
 
         </style>
         <?php
-            
+
         ?>
     </head>
     <body class="fondo">
@@ -76,7 +76,7 @@
                 </div>
                 <div class="divlabel">
                 <label class="labels">Apellido: </label><input type="text" name="apellido" required placeholder="Apellido">
-                </div>            
+                </div>
             </div>
             <div class="divdatos">
                 <div class="divlabel">
@@ -86,7 +86,13 @@
                 <label class="labels">Contraseña: </label><input type="password" name="contraseña" required placeholder="*******">
                 </div>
                 <div class="divlabel">
-                <label class="labels">Edad: </label><input type="text" name="edad" maxlength="2" required placeholder="xx">
+                <label class="labels">Confirmar Contraseña: </label><input type="password" name="confirmar_contraseña" required placeholder="*******">
+                </div>
+                <div class="divlabel">
+                <label class="labels">Fecha de Nacimiento: </label><input type="text" name="fechanacim" required placeholder="yyyy/mm/dd">
+                </div>
+                <div class="divlabel">
+                <label class="labels">Numero de Celular: </label><input type="text" name="celular" required placeholder="3123456789">
                 </div>
             </div>
             <div class="divBoton">

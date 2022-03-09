@@ -49,10 +49,14 @@
             <p>OlmaFlowers</p>
         </div>
         <?php
-            require("usuario.php");
-            $usuario = new Usuario();
-            $usuario->Usuario($_GET["cedula"],$_GET["nombre"],$_GET["apellido"],$_GET["usuario"],$_GET["contraseña"],$_GET["edad"]);
-            $usuario->insertarUsuario();
+            if($_GET["contraseña"]==$_GET["confirmar_contraseña"]){
+                require("usuario.php");
+                $usuario = new Usuario();
+                $usuario->Usuario($_GET["cedula"],$_GET["nombre"],$_GET["apellido"],$_GET["usuario"],$_GET["contraseña"],$_GET["fechanacim"],$_GET["celular"]);
+                $usuario->insertarUsuario();
+            }else{
+                echo "las contraseñas no son iguales";
+            }
         ?>
         <button type="button"><a href="/floristeria/">volver</a></button>
     </body>
